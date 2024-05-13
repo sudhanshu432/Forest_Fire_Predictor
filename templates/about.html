@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        /* Apply basic reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* Use the body as a container for the background image */
+        body {
+            background-image: url('https://media.wired.com/photos/611c1f573ba24d114a71681e/master/pass/Science_fire_GettyImages-539612713.gif');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; /* This will cover the entire page, regardless of its size */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white; /* Assuming a darker image, we set text color to white. Adjust as necessary. */
+            flex-direction: column; /* Adjusts the flex direction to allow for vertical stacking */
+        }
+
+        .content {
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for content for readability */
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px; /* Adds some space between the menu and content */
+        }
+        /* Navigation menu */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            z-index: 1000; /* Ensure menu is above other elements */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a:focus {
+            background-color: #ffffff40;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="http://127.0.0.1:5000">Home</a></li>
+        <li><a href="/ProjectFlow">Project Flow</a></li>
+        <li><a href="/Predictor">Predictor</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
+
+
+
+</body>
+</html>

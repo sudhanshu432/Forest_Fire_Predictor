@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Weather Index (FWI) - Prediction</title>
+    <style>
+        /* Apply basic reset */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            position: relative; /* Ensure relative positioning for absolute positioning inside */
+        }
+
+        /* Background image */
+        body {
+            background-image: url('https://media.wired.com/photos/611c1f573ba24d114a71681e/master/pass/Science_fire_GettyImages-539612713.gif');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            flex-direction: column;
+            overflow-x: hidden; /* Ensures no horizontal scroll */
+        }
+
+        /* Navigation menu */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+            z-index: 1000; /* Ensure menu is above other elements */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a:focus {
+            background-color: #ffffff40;
+            color: #FFF;
+        }
+
+        /* Login card */
+        .login {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            margin-top: 100px; /* Adjust margin to push the form below the header */
+            z-index: 999; /* Ensure form is above other elements */
+            position: relative; /* Enable relative positioning */
+        }
+
+        .login h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .login form input {
+            width: calc(100% - 30px); /* Adjusted width */
+            padding: 12px; /* Adjusted padding */
+            margin-bottom: 15px; /* Adjusted margin */
+            border: 1px solid #dddddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+            font-size: 16px; /* Adjusted font size */
+        }
+
+        .login form input:focus {
+            border-color: #007bff;
+        }
+
+        .login form button {
+            width: calc(100% - 30px); /* Adjusted width */
+            padding: 12px; /* Adjusted padding */
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px; /* Adjusted font size */
+        }
+
+        .login form button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="http://127.0.0.1:5000">Home</a></li>
+        <li><a href="/ProjectFlow">Project Flow</a></li>
+        <li><a href="/Predictor">Predictor</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="login">
+    <h1>Fire Weather Index (FWI) - Prediction</h1>
+    <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <input type="text" name="Temperature" placeholder="Temperature" required><br>
+        <input type="text" name="RH" placeholder="RH" required><br>
+        <input type="text" name="Ws" placeholder="Ws" required><br>
+        <input type="text" name="Rain" placeholder="Rain" required><br>
+        <input type="text" name="FFMC" placeholder="FFMC" required><br>
+        <input type="text" name="DMC" placeholder="DMC" required><br>
+        <input type="text" name="ISI" placeholder="ISI" required><br>
+        <input type="text" name="Classes" placeholder="Classes" required><br>
+        <input type="text" name="Region" placeholder="Region" required><br>
+        <button type="submit">Predict</button>
+    </form>
+    <div class="result">
+        {% if result %}
+        <b>The FWI prediction is:</b> {{result}}
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>
